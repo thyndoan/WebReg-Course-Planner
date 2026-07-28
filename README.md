@@ -1,3 +1,7 @@
+# Thy Doan - CSE134B - improve accessibility
+
+-
+
 # WebReg Course Planner
 
 UCSD's classic **WebReg**, brought back as a class-planning tool — for everyone who misses it now that TSS is the only option. It looks and works like the WebReg you know, loaded with **real Fall 2026 courses, professors, times, rooms, and total seat counts**.
@@ -24,7 +28,7 @@ The legacy public Schedule of Classes only goes through Summer 2026. Fall 2026 e
 
 ### 3. Reverse-engineering TSS's API
 
-I wrote a Playwright script that opens a real Chromium window at the TSS login, waits for me to finish SSO + Duo, and captures the authenticated session. (A subtle bug: login detection had to key on a real `SAP_SESSIONID` cookie — the Fiori URL loads *before* authentication and kept false-positiving, closing the window mid-login.)
+I wrote a Playwright script that opens a real Chromium window at the TSS login, waits for me to finish SSO + Duo, and captures the authenticated session. (A subtle bug: login detection had to key on a real `SAP_SESSIONID` cookie — the Fiori URL loads _before_ authentication and kept false-positiving, closing the window mid-login.)
 
 Since the search UI itself crashed, I didn't try to drive it. Instead I booted the Schedule-of-Classes Fiori app **headless** with the captured session and watched its network traffic. That exposed the real data source the launchpad never advertises: an **OData v4 service, `yucsd_con_module`**. I queried it directly — found the term value-help (Fall 2026 = year `2026`, period `2`), then paged the entity sets and dumped the whole term to disk: **1,768 courses, 8,431 section-events, 7,408 meeting times, and 7,107 instructor records** — bypassing the broken interface entirely.
 
@@ -41,7 +45,7 @@ into structured days, times, rooms, and final-exam entries.
 
 ### 5. From a server to a zero-backend static site
 
-For development this is a **Flask + SQLite** app with a small JSON API. To hand it to non-technical friends as just a link, I converted it into a **fully static site**: a build step bakes the entire catalog into one JSON file, and a small shim (`site/js/localdb.js`) overrides `window.fetch` for the `/api/*` routes so the *exact same frontend* runs entirely in the browser — client-side search, and each person's schedule stored privately in `localStorage`. No server, no database, no shared state, nothing uploaded anywhere.
+For development this is a **Flask + SQLite** app with a small JSON API. To hand it to non-technical friends as just a link, I converted it into a **fully static site**: a build step bakes the entire catalog into one JSON file, and a small shim (`site/js/localdb.js`) overrides `window.fetch` for the `/api/*` routes so the _exact same frontend_ runs entirely in the browser — client-side search, and each person's schedule stored privately in `localStorage`. No server, no database, no shared state, nothing uploaded anywhere.
 
 ### 6. Continuous deployment
 
@@ -96,4 +100,4 @@ Released under the [MIT License](LICENSE) — free to use, modify, and share.
 
 ---
 
-*Not affiliated with or endorsed by UC San Diego. Independent, non-commercial planning tool — it doesn't perform enrollment or access your UCSD account; data is read from UCSD's own systems with your own login and stays on your device. Always confirm details in TSS before enrolling.*
+_Not affiliated with or endorsed by UC San Diego. Independent, non-commercial planning tool — it doesn't perform enrollment or access your UCSD account; data is read from UCSD's own systems with your own login and stays on your device. Always confirm details in TSS before enrolling._
