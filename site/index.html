@@ -25,135 +25,24 @@
       async
       src="//gc.zgo.at/count.js"
     ></script>
-    <style>
-      .mig {
-        max-width: 760px;
-        margin: 0 auto;
-      }
-      .mig-intro {
-        font-size: 13px;
-        line-height: 1.7;
-        color: #333;
-        margin: 12px 0 0;
-      }
-      .mig-cta {
-        text-align: center;
-        margin: 60px 0 72px;
-      }
-      .go-btn {
-        display: inline-block;
-        text-decoration: none;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: bold;
-        font-size: 27px;
-        color: #0a4a65;
-        background: linear-gradient(#ffe05c, #ffcd00 55%, #efb600);
-        border: 1px solid #b98f0a;
-        border-radius: 4px;
-        padding: 17px 46px;
-        box-shadow:
-          inset 0 1px 0 rgba(255, 255, 255, 0.75),
-          0 2px 3px rgba(0, 0, 0, 0.28);
-      }
-      .go-btn:hover {
-        background: linear-gradient(#ffd940, #f7c400 55%, #e4ad00);
-      }
-      .go-btn:active {
-        box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.25);
-      }
-      .go-sub {
-        margin-top: 13px;
-        font-size: 11px;
-        color: #666;
-      }
-      .go-url {
-        color: #1a719c;
-        font-weight: bold;
-        text-decoration: none;
-      }
-      .mig-panel {
-        margin: 22px 0;
-        box-shadow: 2px 3px 9px rgba(0, 0, 0, 0.12);
-      }
-      .mig-hd {
-        background: #0a4a65;
-        color: #fff;
-        font-size: 12px;
-        font-weight: bold;
-        letter-spacing: 0.3px;
-        padding: 6px 12px;
-      }
-      .feat {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 12px;
-        background: #fff;
-        border: 1px solid #c7c7c7;
-        border-top: none;
-      }
-      .feat td {
-        padding: 8px 12px;
-        border-top: 1px solid #e4e4e4;
-        vertical-align: top;
-        line-height: 1.5;
-      }
-      .feat tr:first-child td {
-        border-top: none;
-      }
-      .feat tr:nth-child(even) {
-        background: #f6f9fa;
-      }
-      .feat .ft-name {
-        width: 200px;
-        font-weight: bold;
-        color: #0a4a65;
-        white-space: nowrap;
-      }
-      .mig-soon {
-        border: 1px solid #c7c7c7;
-        border-top: none;
-        background: #fbf6e6;
-        color: #0a4a65;
-        font-size: 13px;
-        line-height: 1.6;
-        text-align: center;
-        padding: 11px 14px;
-      }
-      .mig-soon .soon-hl {
-        color: #cb6c12;
-      }
-      .mig-note {
-        border: 1px solid #c7c7c7;
-        border-top: none;
-        background: #fff;
-        padding: 15px 16px;
-        font-size: 12.5px;
-        line-height: 1.75;
-        color: #333;
-      }
-      .mig-note b {
-        color: #0a4a65;
-      }
-      .mig-note p {
-        margin: 0 0 10px;
-      }
-      .mig-note p:last-child {
-        margin-bottom: 0;
-      }
-    </style>
+    <!--Moved the internal css to webreg.css for separation concern-->
   </head>
+
   <body>
-    <!--Add a skip link so users can use keyboard to jump straight to main content-->
+    <!--Adding multiple landmark for this page to help screen-reader navigate the page better-->
+    <!--Add a skip link so users can jump straight to main content-->
     <a class="skip-link" href="#main">Skip to main content</a>
 
     <!-- ===== MY TRITONLINK chrome ===== -->
-    <!--Change div tag to header, this gives the page a banner landmark for
-    screen-reader navigation-->
-    <header class="tl-banner">
-      <span class="tl-brand">UCSD Course Planner</span>
-      <span class="tl-wordmark"
-        ><span class="tl-unofficial">Unofficial</span>UC San Diego</span
-      >
+    <!--Have a header landmark to make sure the page is clear for screen reader-->
+    <header>
+      <div class="tl-banner">
+        <span class="tl-brand">UCSD Course Planner</span>
+        <span class="tl-wordmark"
+          ><span class="tl-unofficial">Unofficial</span>UC San Diego</span
+        >
+      </div>
+      <!--Move this div inside header-->
       <div class="disclaimer-strip">
         Unofficial, student-made planning tool &mdash;
         <b>not affiliated with, endorsed by, or operated by UC San Diego.</b>
@@ -191,9 +80,9 @@
       </svg>
     </decorative-divider>
 
-    <!--Change <div> to <main>. This is a landmark region for screen-reader to skip to main content-->
-    <main class="page">
-      <!--Change <div> to <article>, having clear landmark helps screen-reader navigate page easily -->
+    <!--Change <div> to <main>. Add landmark for screen-reader navigate page easily. Add id="main" so user can skip to main-->
+    <main id="main" class="page">
+      <!--Change <div> to <article>, having clear landmark helps screen-reader navigate page easily-->
       <article class="mig">
         <h1 class="page-title">This planner has moved to TritonPlan</h1>
         <p class="mig-intro">
@@ -216,57 +105,77 @@
         </p>
 
         <div class="mig-cta">
-          <a class="go-btn" href="https://tritonplan.com"
-            >Go to TritonPlan &raquo;</a
+          <!--Add aria-label for links so screen-reader can distinguish all the links on this page-->
+          <!--Also, add aria-hidden to hide all the decorative symbols because screen-reader might try to pronounce them-->
+          <a
+            class="go-btn"
+            href="https://tritonplan.com"
+            aria-label="Go to TritonPlan homepage"
+            >Go to TritonPlan <span aria-hidden="true">&raquo;</span></a
           >
           <div class="go-sub">
-            <a class="go-url" href="https://tritonplan.com">tritonplan.com</a>
-            &nbsp;&middot;&nbsp; free &nbsp;&middot;&nbsp; sign in with your
-            @ucsd.edu account
+            <!--Add aria-label for this link-->
+            <a
+              class="go-url"
+              href="https://tritonplan.com"
+              aria-label="TritonPlan website, tritonplan.com"
+              >tritonplan.com</a
+            >
+            <!--Add 2 aria-hidden for these decorative symbols-->
+            &nbsp;<span aria-hidden="true">&middot;</span>&nbsp; free
+            &nbsp;<span aria-hidden="true">&middot;</span>&nbsp; sign in with
+            your @ucsd.edu account
           </div>
         </div>
 
-        <div class="mig-panel">
-          <div class="mig-hd">WHAT'S ON TRITONPLAN</div>
+        <!--Change div to section, help with page landmark. Add aria-labelledby to link this section with its h2, so screen-reader can announce the heading when jump to this section-->
+        <section class="mig-panel" aria-labelledby="feature-heading">
+          <!--change <div> to <h2> to help with landmark-->
+          <h2 class="mig-hd" id="feature-heading">WHAT'S ON TRITONPLAN</h2>
           <table class="feat">
+            <!--Add sr-only caption: help screen-reader users know a description of the table before they start reading into it-->
+            <caption class="sr-only">
+              Overview of features available on TritonPlan
+            </caption>
             <tbody>
+              <!--Change td to th and add scope="row" on each th. This helps screen reader read the pairs as a pair <th><descriptions> instead of 2 unlabeled cells-->
               <tr>
-                <td class="ft-name">Schedule Planner</td>
+                <th scope="row" class="ft-name">Schedule Planner</th>
                 <td>
                   The classic course planner you've been using &mdash; still
                   here, unchanged.
                 </td>
               </tr>
               <tr>
-                <td class="ft-name">Degree Audit</td>
+                <th scope="row" class="ft-name">Degree Audit</th>
                 <td>
                   Your major and college requirements, laid out as earned versus
                   still needed.
                 </td>
               </tr>
               <tr>
-                <td class="ft-name">Degree Planner</td>
+                <th scope="row" class="ft-name">Degree Planner</th>
                 <td>
                   Map out your quarters and it checks the prerequisites for you
                   as you go.
                 </td>
               </tr>
               <tr>
-                <td class="ft-name">General Catalog</td>
+                <th scope="row" class="ft-name">General Catalog</th>
                 <td>
                   Search Fall 2026 courses with your own prerequisite status
                   shown on each one.
                 </td>
               </tr>
               <tr>
-                <td class="ft-name">GPA Calculator</td>
+                <th scope="row" class="ft-name">GPA Calculator</th>
                 <td>
                   Project your GPA, or work backward to the grades you'd need
                   this quarter.
                 </td>
               </tr>
               <tr>
-                <td class="ft-name">Academic History</td>
+                <th scope="row" class="ft-name">Academic History</th>
                 <td>
                   Import your transcript once and see everything you've taken
                   and what's in progress.
@@ -281,10 +190,11 @@
               are coming very soon.</b
             >
           </div>
-        </div>
+        </section>
 
-        <div class="mig-panel">
-          <div class="mig-hd">A NOTE OF THANKS</div>
+        <!--Same thing here, change div to section for landmark. Add aria-labelledby to connect this section to its h2-->
+        <section class="mig-panel" aria-labelledby="thanks-heading">
+          <h2 class="mig-hd" id="thanks-heading">A NOTE OF THANKS</h2>
           <div class="mig-note">
             <p>
               To everyone who chipped in to keep this project going &mdash;
@@ -305,17 +215,23 @@
               to fix next.
             </p>
           </div>
-        </div>
+        </section>
       </article>
     </main>
-    <!--Change div to footer landmark-->
-    <footer class="page-footer">
-      <div>
+
+    <!--Change div to footer landmark and move it outside of main because it's not part of the page content-->
+    <footer class="page">
+      <p>
         Unofficial &middot; not affiliated with, endorsed by, or operated by UC
         San Diego &middot; does not perform enrollment.<br />
-        &rarr; <a href="https://tritonplan.com">tritonplan.com</a>
-      </div>
-      <div class="footer-wordmark">UC San Diego</div>
+        <!--Add aria-hidden for the symbol so screen-reader don't try to read it-->
+        <span aria-hidden="true">&rarr;</span>
+        <!--Add aria-label for the footer link so screen-reader users know what this is for-->
+        <a href="https://tritonplan.com" aria-label="TritonPlan website, footer"
+          >tritonplan.com</a
+        >
+      </p>
+      <span class="footer-wordmark">UC San Diego</span>
     </footer>
   </body>
 </html>
