@@ -22,7 +22,7 @@
   --color-error: #c00;
 
   /*font-size*/
-  --font-size: var(--font-size);
+  --font-size: 12px;
 }
 
 html,
@@ -125,8 +125,8 @@ input {
 .tl-unofficial {
   display: block;
   font-family: Arial, Helvetica, sans-serif;
-  /*WAVE flagged this font-size as too small, increasing font-size to the minimum 10px so low-vision users can read it more easily*/
-  font-size: 10px;
+  /*WAVE flagged this font-size as too small, increasing font-size to the font-size so low-vision users can read it more easily*/
+  font-size: var(--font-size);
   font-weight: bold;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -1962,6 +1962,17 @@ footer a {
   left: 8px; /* pops into view when tabbed to */
   top: 8px;
 }
+
+/*Add sr-only to visually hide content, only available for screen readers users */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
 /* ------------------------------------------------ print */
 @media print {
   .tl-banner,
