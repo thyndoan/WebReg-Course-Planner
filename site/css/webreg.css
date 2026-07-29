@@ -1640,6 +1640,7 @@ footer {
 footer a {
   font-weight: normal;
 }
+/*Changed to darker grey to fix poor color contrast which help low vision users see it easier*/
 .footer-wordmark {
   font-family: Garamond, "EB Garamond", "Times New Roman", serif;
   font-size: 26px;
