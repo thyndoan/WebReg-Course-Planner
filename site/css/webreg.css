@@ -10,6 +10,7 @@
 /* Design tokens: turn reusable color/spacing/radius/font-size values into variables so we can easily change them because the website has many contrast errors  */
 /* I automatically replace all the repeated colors to it's variable colors below for easy maintainability*/
 :root {
+  /*Colors*/
   --primary-blue: #1b65a6;
   --darker-blue: #14425c;
   --dark-teal: #0a4a65;
@@ -19,13 +20,16 @@
   --color-orange: #cb6c12;
   --color-border: #c7c7c7;
   --color-error: #c00;
+
+  /*font-size*/
+  --font-size: var(--font-size);
 }
 
 html,
 body {
   background: var(--color-white);
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: var(--font-size);
   color: var(--color-black);
 }
 
@@ -48,7 +52,7 @@ button,
 select,
 input {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: var(--font-size);
 }
 
 /* ------------------------------------------------ classic gray buttons */
@@ -121,7 +125,8 @@ input {
 .tl-unofficial {
   display: block;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 9px;
+  /*WAVE flagged this font-size as too small, increasing font-size to the minimum 10px so low-vision users can read it more easily*/
+  font-size: 10px;
   font-weight: bold;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -231,7 +236,7 @@ input {
   flex-wrap: wrap;
 }
 .hdr-links {
-  font-size: 12px;
+  font-size: var(--font-size);
   white-space: nowrap;
 }
 .hdr-links .sep {
@@ -245,7 +250,7 @@ input {
 
 .status-line {
   margin: 14px 0 4px;
-  font-size: 12px;
+  font-size: var(--font-size);
 }
 
 /* external-link glyphs removed per feedback — kept as no-ops so markup is safe */
@@ -258,7 +263,7 @@ input {
 .term-pick {
   text-align: center;
   margin: 90px 0 140px;
-  font-size: 12px;
+  font-size: var(--font-size);
 }
 .term-pick select {
   min-width: 220px;
@@ -337,7 +342,7 @@ input {
 .adv-left td {
   padding: 3px 4px;
   vertical-align: top;
-  font-size: 12px;
+  font-size: var(--font-size);
 }
 .adv-left td.lab {
   text-align: right;
@@ -354,7 +359,7 @@ input {
   color: #999;
 }
 .adv-right {
-  font-size: 12px;
+  font-size: var(--font-size);
 }
 .adv-right .so-hd {
   font-weight: bold;
@@ -468,12 +473,12 @@ input {
 }
 .results-toggle-row a {
   font-weight: normal;
-  font-size: 12px;
+  font-size: var(--font-size);
 }
 
 .results-toolbar {
   margin: 4px 0 6px;
-  font-size: 12px;
+  font-size: var(--font-size);
   display: flex;
   align-items: center;
 }
@@ -684,7 +689,7 @@ table.sec-table {
 }
 .sched-units {
   margin-right: auto;
-  font-size: 12px;
+  font-size: var(--font-size);
   color: #444;
 }
 .sched-units b {
@@ -703,7 +708,7 @@ table.sec-table {
   background: linear-gradient(#d3dde2, #b6c7cf);
   color: #14304d;
   font-weight: bold;
-  font-size: 12px;
+  font-size: var(--font-size);
   padding: 5px 18px;
   margin: 0 4px 0 0;
   border-radius: 5px 5px 0 0;
@@ -752,7 +757,7 @@ table.sec-table {
   margin-left: auto;
   color: var(--color-white);
   font-weight: bold;
-  font-size: 12px;
+  font-size: var(--font-size);
   padding-bottom: 6px;
 }
 .sched-links a {
@@ -853,7 +858,7 @@ tr.row-event td {
   background: var(--dark-teal);
   color: var(--color-white);
   font-weight: bold;
-  font-size: 12px;
+  font-size: var(--font-size);
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
@@ -1045,7 +1050,7 @@ tr.row-event td {
   padding: 7px 10px;
   background: #eef3f5;
   border-bottom: 1px solid #cdd8dd;
-  font-size: 12px;
+  font-size: var(--font-size);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1055,7 +1060,7 @@ tr.row-event td {
   font-weight: bold;
 }
 .map-controls select {
-  font-size: 12px;
+  font-size: var(--font-size);
   padding: 2px 4px;
 }
 .map-controls .mc-hint {
@@ -1088,12 +1093,12 @@ tr.row-event td {
 }
 .walk-dayname {
   font-weight: bold;
-  font-size: 12px;
+  font-size: var(--font-size);
   color: #333;
   margin: 4px 0 2px;
 }
 .walk-row {
-  font-size: 12px;
+  font-size: var(--font-size);
   padding: 4px 8px;
   margin: 2px 0;
   background: #f2f7f9;
@@ -1116,7 +1121,7 @@ tr.row-event td {
   font-weight: bold;
 }
 .walk-none {
-  font-size: 12px;
+  font-size: var(--font-size);
   color: #555;
   padding: 4px 2px;
 }
@@ -1140,7 +1145,7 @@ tr.row-event td {
   border-radius: 6px;
   padding: 10px 14px;
   margin: 14px 0;
-  font-size: 12px;
+  font-size: var(--font-size);
 }
 .conflict-banner .hd {
   color: var(--color-error);
@@ -1292,7 +1297,7 @@ table.confirm-table {
   border-radius: 8px;
   background: #f9ebeb;
   padding: 10px 14px;
-  font-size: 12px;
+  font-size: var(--font-size);
 }
 .result-red .hd {
   color: var(--color-error);
@@ -1304,7 +1309,7 @@ table.confirm-table {
   border-radius: 6px;
   background: #fef8e3;
   padding: 8px 12px;
-  font-size: 12px;
+  font-size: var(--font-size);
   margin-bottom: 12px;
 }
 .alert-yellow .hd {
@@ -1331,7 +1336,7 @@ table.confirm-table {
   margin-bottom: 6px;
 }
 .appt-cols div.col {
-  font-size: 12px;
+  font-size: var(--font-size);
   line-height: 1.6;
 }
 
@@ -1430,7 +1435,7 @@ table.confirm-table {
   background: #f4f7f9;
   border-bottom: 1px solid #dbe4e8;
   padding: 6px 14px;
-  font-size: 12px;
+  font-size: var(--font-size);
 }
 .site-nav a {
   color: var(--darker-blue);
@@ -1532,7 +1537,7 @@ table.confirm-table {
 }
 .content .updated {
   color: #999;
-  font-size: 12px;
+  font-size: var(--font-size);
   margin-top: 30px;
 }
 .content .cta {
@@ -1559,7 +1564,7 @@ table.confirm-table {
   border: 1px solid #b9c6cd;
   border-radius: 8px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
-  font-size: 12px;
+  font-size: var(--font-size);
   z-index: 200;
   overflow: hidden;
 }
@@ -1607,7 +1612,7 @@ table.confirm-table {
 .tip-zelle {
   margin-top: 8px;
   color: #333;
-  font-size: 12px;
+  font-size: var(--font-size);
 }
 .tip-zelle b {
   color: #6b31b3;
@@ -1638,7 +1643,7 @@ footer a {
 .footer-wordmark {
   font-family: Garamond, "EB Garamond", "Times New Roman", serif;
   font-size: 26px;
-  color: #c8c8c8;
+  color: #595959;
   white-space: nowrap;
 }
 
@@ -1885,7 +1890,7 @@ footer a {
 .mig-hd {
   background: var(--dark-teal);
   color: var(--color-white);
-  font-size: 12px;
+  font-size: var(--font-size);
   font-weight: bold;
   letter-spacing: 0.3px;
   padding: 6px 12px;
@@ -1893,7 +1898,7 @@ footer a {
 .feat {
   width: 100%;
   border-collapse: collapse;
-  font-size: 12px;
+  font-size: var(--font-size);
   background: var(--color-white);
   border: 1px solid var(--color-border);
   border-top: none;
@@ -1927,7 +1932,8 @@ footer a {
   padding: 11px 14px;
 }
 .mig-soon .soon-hl {
-  color: #cb6c12;
+  /*WAVE flagged this color as low contrast, which is hard for users with low vision or in bright light, so I changed it to a darker orange color. I picked this color by checking the WebAIM Contrast Checker*/
+  color: #7e430c;
 }
 .mig-note {
   border: 1px solid var(--color-border);
