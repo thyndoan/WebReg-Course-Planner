@@ -1,6 +1,16 @@
-# Thy Doan - CSE134B - improve accessibility
+# Thy Doan - CSE134B - Accessibility fixes
 
--
+I ran the page through WAVE and fixed what it flagged and improved the score from 8.4 to 10
+
+Here is my link: [link](https://thyndoan.github.io/WebReg-Course-Planner/site/)
+
+## Before
+
+![Weekly calendar with conflict detection](docs/research/verify/accessibilityCheckerScore.png)
+
+## After:
+
+![Weekly calendar with conflict detection](docs/research/verify/accessibilityCheckerScoreAfterFixing.png)
 
 # WebReg Course Planner
 
